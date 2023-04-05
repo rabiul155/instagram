@@ -4,7 +4,7 @@ import Link from 'next/link';
 const login = () => {
     return (
         <div>
-            <div className='max-w-lg mx-auto'>
+            <div className='max-w-md mx-auto'>
                 <div className=" bg-base-100">
                     <div className="hero-content flex-col ">
                         <div className=' text-center'>
@@ -38,7 +38,11 @@ const login = () => {
 
                                 </div>
 
-                                <label className="flex justify-end ">
+                                <label className="flex justify-between ">
+                                    <div className="flex items-center">
+                                        <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                                        <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">Remember me</label>
+                                    </div>
                                     <Link href='' className="text-orange-600  float-right no-underline">Forgot password?</Link>
                                 </label>
 
@@ -47,7 +51,7 @@ const login = () => {
                                 </div>
                                 <div className=' text-center'>
                                     <span>  Don't have an account? </span>
-                                    <Link href='/register' className=' text-orange-600 '> Register Now</Link>
+                                    <Link href='/signup' className=' text-orange-600 '> SignUp Now</Link>
                                 </div>
                                 <div className="divider my-2">OR</div>
 

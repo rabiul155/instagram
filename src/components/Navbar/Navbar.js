@@ -45,12 +45,12 @@ const Navbar = () => {
                             <li className='  lg:hidden'> <Link href=''  > Home</Link></li>
 
                             <li>
-                                <Link href='' >
+                                <Link href='/' >
                                     Profile
                                 </Link>
                             </li>
                             <li><button >Logout</button></li>
-                            <li><Link href=''>LogIn</Link></li>
+                            <li><Link href='/login'>LogIn</Link></li>
 
 
                         </ul>
