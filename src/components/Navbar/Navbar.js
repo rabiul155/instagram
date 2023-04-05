@@ -1,7 +1,9 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaUserCircle, FaRegBell } from "react-icons/fa";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import img from '../../Images/insta.jpg'
 
 
 const Navbar = () => {
@@ -10,10 +12,14 @@ const Navbar = () => {
             <div className="navbar  bg-base-200">
                 <div className="flex-1">
                     <Link href='' className=" normal-case font-bold text-2xl">
-                        <img className=' h-9 w-9 rounded-full mx-2 inline-block' src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png' alt="" />
+
+                        <Image
+                            className=' h-9 w-9 rounded-full mx-2 inline-block'
+                            src={img}
+                        ></Image>
                         <span className=''>Instagram</span>
                     </Link>
-                    <Link href='' className='mx-4 text-lg font-bold hidden lg:block' > Home</Link>
+                    <Link href='/' className='mx-4 text-lg font-bold hidden lg:block' > Home</Link>
                 </div>
 
                 <div className="flex-none gap-2 relative">
@@ -42,10 +48,10 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
 
-                            <li className='  lg:hidden'> <Link href=''  > Home</Link></li>
+                            <li className='lg:hidden'> <Link href='/'  > Home</Link></li>
 
                             <li>
-                                <Link href='/' >
+                                <Link href='' >
                                     Profile
                                 </Link>
                             </li>

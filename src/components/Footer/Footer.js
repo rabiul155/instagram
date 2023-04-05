@@ -1,10 +1,18 @@
+import Image from "next/image";
+import img from '../../Images/insta.jpg'
 
 
 const Footer = () => {
     return (
         <footer className="footer p-10 bg-base-200 text-base-content">
             <div>
-                <img className=' h-16 w-16 mt-2' src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png' alt="" />
+
+                <Image
+                    className=' h-16 w-16 mt-2'
+                    src={img}
+                >
+
+                </Image>
                 <p>Instagram Drive to Dream<br />Providing social media service since 1992</p>
             </div>
             <div>

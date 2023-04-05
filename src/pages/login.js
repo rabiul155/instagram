@@ -1,16 +1,36 @@
 import Link from 'next/link';
+import img from '../Images/insta.jpg'
+import Image from 'next/image';
+
 
 
 const login = () => {
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const name = form.email.value;
+        const password = form.password.value;
+        console.log(name, password);
+
+    }
+
+
+
+
     return (
         <div>
             <div className='max-w-md mx-auto'>
                 <div className=" bg-base-100">
-                    <div className="hero-content flex-col ">
+                    <div className="hero-content flex-col gap-0">
                         <div className=' text-center'>
                             <div className=' flex justify-center items-center'>
-                                <img className=' h-6 mt-1 w-6' src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png' alt="" />
-                                <h3 className=' text-3xl m-3 font-bold'>
+
+                                <Image className=' h-6 mt-1 w-6'
+                                    src={img}
+                                    alt=''
+                                ></Image>
+                                <h3 className=' text-3xl mx-3 font-bold'>
                                     Instagram
                                 </h3>
                             </div>
@@ -22,7 +42,7 @@ const login = () => {
                                 </p>
                             </div>
                         </div>
-                        <form className="card  max-w-md w-full px-2 shadow-2xl bg-base-100">
+                        <form onSubmit={handleSubmit} className="card  max-w-md w-full px-2 shadow-2xl bg-base-100">
                             <div className="card-body">
                                 <div className="form-control">
                                     <label className="label">
