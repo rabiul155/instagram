@@ -43,9 +43,9 @@ const signup = () => {
                 if (imgData.success) {
                     createUser(email, password)
                         .then(result => {
+                            router.replace('/')
                             setIsLoading(false)
                             toast.success('signUp successfully')
-                            router.replace('/')
                             const userInfo = {
                                 displayName: name,
                                 photoURL: imgData.data.url
@@ -106,7 +106,7 @@ const signup = () => {
 
     const saveUser = (userProfile) => {
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://instagram-server-bay.vercel.app/users", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -188,7 +188,7 @@ const signup = () => {
                                         </div>
 
                                         <div className="form-control mt-4">
-                                            <button type='submit' className="btn border-0 bg-orange-500 hover:bg-orange-400">Register</button>
+                                            <button type='submit' className="btn border-0 bg-orange-500 hover:bg-orange-400">SignUp</button>
                                         </div>
                                         <div className=' text-center'>
                                             <span>  Have an account? </span>

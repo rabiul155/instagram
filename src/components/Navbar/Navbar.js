@@ -78,7 +78,7 @@ const Navbar = () => {
                                 user ?
                                     <>
                                         <li>
-                                            <Link href='' >
+                                            <Link href='/profile' >
                                                 Profile
                                             </Link>
                                         </li>

@@ -1,11 +1,12 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Post = ({ post }) => {
 
-    const { title, email, name, content, picture, postImg, date } = post
+    const { _id, title, email, name, content, picture, postImg, date } = post
     return (
-        <div className='  my-5'>
-            <div className="rounded-md shadow-md mx-auto lg:max-w-2xl dark:bg-gray-800 dark:text-gray-100">
+        <Link href={`/posts/${_id}`} >
+            <div className="rounded-md my-5 shadow-md mx-auto lg:max-w-2xl dark:bg-gray-800 dark:text-gray-100">
                 <div className="flex items-center justify-between p-3">
                     <div className="flex items-center space-x-2">
                         <img src={picture} alt="" className="object-cover object-center w-10 h-10 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
@@ -56,13 +57,13 @@ const Post = ({ post }) => {
                     </div>
                     <div className="space-y-3">
                         <p className="">
-                            {content.slice(0, 200)}<span className=' text-gray-400'>... see more</span>
+                            {content.slice(0, 200)}<span className=' text-gray-400'>...see more</span>
                         </p>
                         <input type="text" placeholder="Add a comment..." className="w-full py-[6px] px-3 dark:bg-transparent border-none rounded text-sm dark:text-gray-100" />
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
