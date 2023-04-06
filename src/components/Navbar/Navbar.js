@@ -1,17 +1,33 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaUserCircle, FaRegBell } from "react-icons/fa";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import img from '../../Images/insta.jpg'
+import { AuthContext } from '@/context/ContextProvider';
+import { toast } from 'react-hot-toast';
+
+
+
 
 
 const Navbar = () => {
+
+
+    const { logOut, user } = useContext(AuthContext)
+
+
+    const handleLogOut = () => {
+        logOut()
+        toast.success('logOut successfully')
+
+    }
+
     return (
         <div>
             <div className="navbar  bg-base-200">
                 <div className="flex-1">
-                    <Link href='' className=" normal-case font-bold text-2xl">
+                    <Link href='/' className=" normal-case font-bold text-2xl">
 
                         <Image
                             className=' h-9 w-9 rounded-full mx-2 inline-block'
@@ -19,7 +35,7 @@ const Navbar = () => {
                         ></Image>
                         <span className=''>Instagram</span>
                     </Link>
-                    <Link href='/' className='mx-4 text-lg font-bold hidden lg:block' > Home</Link>
+
                 </div>
 
                 <div className="flex-none gap-2 relative">
@@ -48,16 +64,21 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
 
-                            <li className='lg:hidden'> <Link href='/'  > Home</Link></li>
 
-                            <li>
-                                <Link href='' >
-                                    Profile
-                                </Link>
-                            </li>
-                            <li><button >Logout</button></li>
-                            <li><Link href='/login'>LogIn</Link></li>
+                            {
+                                user ?
+                                    <>
+                                        <li>
+                                            <Link href='' >
+                                                Profile
+                                            </Link>
+                                        </li>
+                                        <li><button onClick={handleLogOut}>Logout</button></li>
+                                    </>
+                                    :
+                                    <li><Link href='/login'>LogIn</Link></li>
 
+                            }
 
                         </ul>
                     </div>
