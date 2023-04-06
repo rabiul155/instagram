@@ -6,10 +6,13 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '@/context/ContextProvider'
 import { toast } from 'react-hot-toast';
 import Loading from '@/components/Loading/Loading';
+import { useRouter } from 'next/router';
 
 
 const signup = () => {
 
+
+    const router = useRouter()
     const { createUser, updateUser, createUserGoogle } = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const [isLoadig, setIsLoading] = useState(false)
@@ -36,19 +39,28 @@ const signup = () => {
         })
             .then(res => res.json())
             .then(imgData => {
-                console.log(imgData);
+
                 if (imgData.success) {
                     createUser(email, password)
                         .then(result => {
                             setIsLoading(false)
                             toast.success('signUp successfully')
+                            router.replace('/')
                             const userInfo = {
                                 displayName: name,
                                 photoURL: imgData.data.url
                             }
                             updateUser(userInfo)
-                                .then(result => {
-                                    console.log('update user');
+                                .then(() => {
+
+                                    const userProfile = {
+                                        name: name,
+                                        email: email,
+                                        photo: imgData.data.url,
+                                    }
+
+                                    saveUser(userProfile)
+
 
                                 })
                                 .catch(err => {
@@ -73,15 +85,37 @@ const signup = () => {
         setIsLoading(true)
         createUserGoogle()
             .then(result => {
-                console.log(result.user);
+                const user = result.user;
+
                 setIsLoading(false)
                 toast.success('singUp with google successfully')
+                const userProfile = {
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL,
+                }
+                saveUser(userProfile)
 
             })
             .catch(err => {
                 setIsLoading(false)
                 toast.error('something went wrong please try again')
                 console.log('google singnup errro', err);
+            })
+    }
+
+    const saveUser = (userProfile) => {
+
+        fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userProfile)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
             })
     }
 

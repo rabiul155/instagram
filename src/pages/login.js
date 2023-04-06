@@ -5,10 +5,13 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '@/context/ContextProvider';
 import { toast } from 'react-hot-toast';
 import Loading from '@/components/Loading/Loading';
+import { useRouter } from 'next/router';
 
 
 const login = () => {
 
+
+    const router = useRouter();
     const { logIn, createUserGoogle } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
 
@@ -26,6 +29,7 @@ const login = () => {
                 console.log(user);
                 setLoading(false)
                 toast.success('logIn successfully')
+                router.replace('/')
 
             })
             .catch(err => {

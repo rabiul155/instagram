@@ -17,6 +17,8 @@ const Navbar = () => {
     const { logOut, user } = useContext(AuthContext)
 
 
+
+
     const handleLogOut = () => {
         logOut()
         toast.success('logOut successfully')
@@ -32,6 +34,7 @@ const Navbar = () => {
                         <Image
                             className=' h-9 w-9 rounded-full mx-2 inline-block'
                             src={img}
+                            alt=''
                         ></Image>
                         <span className=''>Instagram</span>
                     </Link>
@@ -58,7 +61,13 @@ const Navbar = () => {
                         <label tabIndex={0} className="btn btn-ghost btn-circle ">
                             <div className=" rounded-full">
 
-                                <FaUserCircle className='text-orange-600' size={30}></FaUserCircle>
+                                {
+                                    user ?
+                                        <img className=' h-8 w-8 rounded-full' src={user?.photoURL}></img>
+                                        :
+                                        <FaUserCircle className='text-orange-600' size={30}></FaUserCircle>
+                                }
+
 
                             </div>
                         </label>

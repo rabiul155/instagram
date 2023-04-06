@@ -10,6 +10,7 @@ const Footer = () => {
                 <Image
                     className=' h-16 w-16 mt-2'
                     src={img}
+                    alt=""
                 >
 
                 </Image>
